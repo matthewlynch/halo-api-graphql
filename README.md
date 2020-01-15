@@ -1,7 +1,7 @@
 # HALO API GraphQL server example
 
 <p align="center">
-   ![GraphQL playground showing data returned from the HALO API](https://github.com/matthewlynch/halo-api-graphql/blob/master/.github/images/example.png?raw=true) 
+   ![GraphQL playground showing data returned from the HALO API](https://raw.githubusercontent.com/matthewlynch/halo-api-graphql/blob/master/.github/images/example.png?raw=true) 
 </p>
 
 ## Getting Started
