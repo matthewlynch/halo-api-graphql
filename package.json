@@ -1,0 +1,38 @@
+{
+  "name": "halo-api-graphql",
+  "version": "0.1.0",
+  "description": "GraphQL wrapper for the Halo REST API (https://developer.haloapi.com)",
+  "main": "index.js",
+  "author": "Matt Lynch <matt@mattlynch.io>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node -r dotenv/config ./src/server.js",
+    "dev": "nodemon --ext js,json,graphql -r dotenv/config ./src/server.js",
+    "metadata": "node -r dotenv/config ./tools/download-metadata.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.1",
+    "graphql-scalars": "^1.0.6",
+    "graphql-yoga": "^1.18.3"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "husky": ">=1",
+    "lint-staged": ">=8",
+    "make-dir": "^3.0.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

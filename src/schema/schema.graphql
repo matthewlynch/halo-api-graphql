@@ -1,0 +1,738 @@
+scalar DateTime
+scalar GUID
+scalar HexColorCode
+scalar URL
+
+type ISO8601Date {
+  ISO8601Date: DateTime
+}
+################################################################
+# Halo 5 Start
+################################################################
+
+#########################################
+# Halo 5 Profile start
+#########################################
+enum Halo5ImageSizes {
+  SIZE_95
+  SIZE_128
+  SIZE_190
+  SIZE_256
+  SIZE_512
+}
+
+enum Halo5SpartanImageCrop {
+  full
+  portrait
+}
+
+type Halo5Appearance {
+  Gamertag: String!
+  LastModifiedUtc: ISO8601Date!
+  FirstModifiedUtc: ISO8601Date!
+  ServiceTag: String!
+  Company: Halo5PlayerCompanyMembership
+}
+
+type Halo5PlayerCompanyMembership {
+  Id: GUID!
+  Name: String!
+  CompanyInfo: Halo5Company
+}
+
+type Halo5Emblem {
+  url: URL!
+}
+
+type Halo5SpartanImage {
+  url: URL!
+}
+#########################################
+# Halo 5 Profile end
+#########################################
+
+#########################################
+# Halo 5 Service records start
+#########################################
+
+################
+# Halo 5 Arena start
+################
+type Halo5ServiceRecordArena {
+  Id: String!
+  ResultCode: Int!
+  Result: Halo5ArenaResult
+  SpartanRank: Int!
+  Xp: Float!
+}
+
+type Halo5ArenaResult {
+  ArenaStats: Halo5ArenaStats!
+  SpartanRank: Int!
+  Xp: Float!
+}
+
+type Halo5ArenaStats {
+  ArenaPlaylistStats: [Halo5ArenaPlaylistStats]!
+  HighestCsrAttained: Halo5CompetitiveSkillRanking
+  ArenaGameBaseVariantStats: [Halo5ArenaGameBaseVariantStat]!
+  TopGameBaseVariants: [Halo5ArenaTopGameBaseVariants]!
+  HighestCsrPlaylistId: GUID
+  HighestCsrSeasonId: GUID
+  HighestCsrPlaylistInfo: Halo5Playlist
+  HighestCsrSeasonInfo: Halo5Season
+  ArenaPlaylistStatsSeasonId: GUID!
+  TotalKills: Int!
+  TotalHeadshots: Int!
+  TotalWeaponDamage: Float!
+  TotalShotsFired: Int!
+  TotalShotsLanded: Int!
+  WeaponWithMostKills: Halo5WeaponStat!
+  TotalMeleeKills: Int!
+  TotalMeleeDamage: Float!
+  TotalAssassinations: Int!
+  TotalGroundPoundKills: Int!
+  TotalGroundPoundDamage: Float!
+  TotalShoulderBashKills: Int!
+  TotalShoulderBashDamage: Float!
+  TotalGrenadeDamage: Float!
+  TotalPowerWeaponKills: Int!
+  TotalPowerWeaponDamage: Float!
+  TotalPowerWeaponGrabs: Int!
+  TotalPowerWeaponPossessionTime: String!
+  TotalDeaths: Int!
+  TotalAssists: Int!
+  TotalGamesCompleted: Int!
+  TotalGamesWon: Int!
+  TotalGamesLost: Int!
+  TotalGamesTied: Int!
+  TotalTimePlayed: String!
+  TotalGrenadeKills: Int!
+  MedalAwards: [Halo5MedalId]!
+  DestroyedEnemyVehicles: [Halo5Vehicle]!
+  EnemyKills: [Halo5Enemies]!
+  WeaponStats: [Halo5WeaponStat]!
+  Impulses: [Halo5ImpulseId]!
+  TotalSpartanKills: Int!
+  FastestMatchWin: String!
+}
+
+type Halo5ArenaPlaylistStats {
+  PlaylistId: GUID!
+  MeasurementMatchesLeft: Int!
+  HighestCsr: Halo5CompetitiveSkillRanking!
+  Csr: Halo5CompetitiveSkillRanking!
+  CsrPercentile: Int
+  TotalKills: Int!
+  TotalHeadshots: Int!
+  TotalWeaponDamage: Float!
+  TotalShotsFired: Int!
+  TotalShotsLanded: Int!
+  WeaponWithMostKills: Halo5WeaponStat!
+  TotalMeleeKills: Int!
+  TotalMeleeDamage: Float!
+  TotalAssassinations: Int!
+  TotalGroundPoundKills: Int!
+  TotalGroundPoundDamage: Float!
+  TotalShoulderBashKills: Int!
+  TotalShoulderBashDamage: Float!
+  TotalGrenadeDamage: Float!
+  TotalPowerWeaponKills: Int!
+  TotalPowerWeaponDamage: Float!
+  TotalPowerWeaponGrabs: Int!
+  TotalPowerWeaponPossessionTime: String!
+  TotalDeaths: Int!
+  TotalAssists: Int!
+  TotalGamesCompleted: Int!
+  TotalGamesWon: Int!
+  TotalGamesLost: Int!
+  TotalGamesTied: Int!
+  TotalTimePlayed: String!
+  TotalGrenadeKills: Int!
+  MedalAwards: [Halo5MedalId]!
+  DestroyedEnemyVehicles: [Halo5Vehicle]!
+  EnemyKills: [Halo5Enemies]!
+  WeaponStats: [Halo5WeaponStat]!
+  Impulses: [Halo5ImpulseId]!
+  TotalSpartanKills: Int!
+}
+
+type Halo5CompetitiveSkillRanking {
+  Tier: Int!
+  DesignationId: Int!
+  Csr: Int!
+  PercentToNextTier: Int!
+  Rank: Int
+}
+
+type Halo5ArenaGameBaseVariantStat {
+  FlexibleStats: Halo5FlexibleStats!
+  GameBaseVariantId: GUID!
+  TotalKills: Int!
+  TotalHeadshots: Int!
+  TotalWeaponDamage: Float!
+  TotalShotsFired: Int!
+  TotalShotsLanded: Int!
+  WeaponWithMostKills: Halo5WeaponStat!
+  TotalMeleeKills: Int!
+  TotalMeleeDamage: Float!
+  TotalAssassinations: Int!
+  TotalGroundPoundKills: Int!
+  TotalGroundPoundDamage: Float!
+  TotalShoulderBashKills: Int!
+  TotalShoulderBashDamage: Float!
+  TotalGrenadeDamage: Float!
+  TotalPowerWeaponKills: Int!
+  TotalPowerWeaponDamage: Float!
+  TotalPowerWeaponGrabs: Int!
+  TotalPowerWeaponPossessionTime: String!
+  TotalDeaths: Int!
+  TotalAssists: Int!
+  TotalGamesCompleted: Int!
+  TotalGamesWon: Int!
+  TotalGamesLost: Int!
+  TotalGamesTied: Int!
+  TotalTimePlayed: String!
+  TotalGrenadeKills: Int!
+  MedalAwards: [Halo5MedalId]!
+  DestroyedEnemyVehicles: [Halo5Vehicle]!
+  EnemyKills: [Halo5Enemies]!
+  WeaponStats: [Halo5WeaponStat]!
+  Impulses: [Halo5ImpulseId]!
+  TotalSpartanKills: Int!
+}
+
+type Halo5ArenaTopGameBaseVariants {
+  GameBaseVariantRank: Int!
+  NumberOfMatchesCompleted: Int!
+  GameBaseVariantId: String!
+  NumberOfMatchesWon: Int!
+}
+################
+# Halo 5 Arena end
+################
+
+################
+# Halo 5 Warzone start
+################
+type Halo5ServiceRecordWarzone {
+  Id: String!
+  ResultCode: Int!
+  Result: Halo5WarzoneResult
+}
+
+type Halo5WarzoneResult {
+  WarzoneStat: Halo5WarzoneStat!
+  SpartanRank: Int!
+  Xp: Float!
+}
+
+type Halo5WarzoneStat {
+  TotalPiesEarned: Float!
+  ScenarioStats: [ScenarioStat]!
+  TotalKills: Int!
+  TotalHeadshots: Int!
+  TotalWeaponDamage: Float!
+  TotalShotsFired: Int!
+  TotalShotsLanded: Int!
+  WeaponWithMostKills: Halo5WeaponStat!
+  TotalMeleeKills: Int!
+  TotalMeleeDamage: Float!
+  TotalAssassinations: Int!
+  TotalGroundPoundKills: Int!
+  TotalGroundPoundDamage: Float!
+  TotalShoulderBashKills: Int!
+  TotalShoulderBashDamage: Float!
+  TotalGrenadeDamage: Float!
+  TotalPowerWeaponKills: Int!
+  TotalPowerWeaponDamage: Float!
+  TotalPowerWeaponGrabs: Int!
+  TotalPowerWeaponPossessionTime: String!
+  TotalDeaths: Int!
+  TotalAssists: Int!
+  TotalGamesCompleted: Int!
+  TotalGamesWon: Int!
+  TotalGamesLost: Int!
+  TotalGamesTied: Int!
+  TotalTimePlayed: String!
+  TotalGrenadeKills: Int!
+  MedalAwards: [Halo5MedalId]!
+  DestroyedEnemyVehicles: [Halo5Vehicle]!
+  EnemyKills: [Halo5Enemies]!
+  WeaponStats: [Halo5WeaponStat]!
+  Impulses: [Halo5ImpulseId]!
+  TotalSpartanKills: Int!
+  FastestMatchWin: String!
+}
+
+type ScenarioStat {
+  TotalPiesEarned: Float!
+  Halo5FlexibleStats: [Halo5FlexibleStats!]!
+  MapId: String!
+  GameBaseVariantId: GUID!
+  TotalKills: Int!
+  TotalHeadshots: Int!
+  TotalWeaponDamage: Float!
+  TotalShotsFired: Int!
+  TotalShotsLanded: Int!
+  WeaponWithMostKills: Halo5WeaponStat!
+  TotalMeleeKills: Int!
+  TotalMeleeDamage: Float!
+  TotalAssassinations: Int!
+  TotalGroundPoundKills: Int!
+  TotalGroundPoundDamage: Float!
+  TotalShoulderBashKills: Int!
+  TotalShoulderBashDamage: Float!
+  TotalGrenadeDamage: Float!
+  TotalPowerWeaponKills: Int!
+  TotalPowerWeaponDamage: Float!
+  TotalPowerWeaponGrabs: Int!
+  TotalPowerWeaponPossessionTime: String!
+  TotalDeaths: Int!
+  TotalAssists: Int!
+  TotalGamesCompleted: Int!
+  TotalGamesWon: Int!
+  TotalGamesLost: Int!
+  TotalGamesTied: Int!
+  TotalTimePlayed: String!
+  TotalGrenadeKills: Int!
+  MedalAwards: [Halo5MedalId]!
+  DestroyedEnemyVehicles: [Halo5Vehicle]!
+  EnemyKills: [Halo5Enemies]!
+  WeaponStats: [Halo5WeaponStat]!
+  Impulses: [Halo5ImpulseId]!
+  TotalSpartanKills: Int!
+  FastestMatchWin: String!
+}
+################
+# Halo 5 Warzone end
+################
+
+#########################################
+# Halo 5 Service records end
+#########################################
+
+#########################################
+# Halo 5 Player match history start
+#########################################
+enum Halo5GameModes {
+  arena
+  campaign
+  custom
+  customlocal
+  warzone
+}
+
+enum Halo5PlaylistGameModes {
+  Arena
+  Campaign
+  Custom
+  Warzone
+}
+
+type Halo5PlayerMatchHistory {
+  Start: Int!
+  Count: Int!
+  Results: [Halo5PlayerMatchHistoryResult!]!
+}
+
+type Halo5PlayerMatchHistoryResult {
+  Id: Halo5PlayerMatchHistoryResultId!
+  HopperId: GUID
+  MapId: GUID!
+  MapVariant: Halo5MapVariant!
+  GameBaseVariantId: GUID!
+  GameVariant: Halo5GameVariant!
+  MatchDuration: String!
+  MatchCompletedDate: DateTime!
+  Teams: [Halo5Team]!
+  Players: [Halo5TeamPlayerData]
+  IsTeamGame: Boolean!
+  SeasonId: String!
+}
+
+type Halo5PlayerMatchHistoryResultId {
+  MatchId: GUID!
+  GameMode: Int!
+}
+
+type Halo5MapVariant {
+  ResourceType: Int!
+  ResourceId: GUID!
+  OwnerType: Int!
+  Owner: String
+}
+
+type Halo5GameVariant {
+  ResourceType: Int!
+  ResourceId: GUID!
+  OwnerType: Int!
+  Owner: String
+}
+
+type Halo5Team {
+  Id: Int!
+  TeamInfo: Halo5TeamInfo
+  Score: Int!
+  Rank: Int!
+}
+
+type Halo5TeamInfo {
+  name: String!
+  description: String
+  color: HexColorCode!
+  iconUrl: URL
+  id: String!
+}
+
+type Halo5TeamPlayerData {
+  Player: Halo5TeamPlayer!
+  TeamId: Int!
+  Rank: Int!
+  Result: Int!
+  TotalKills: Int!
+  TotalDeaths: Int!
+  TotalAssists: Int!
+}
+
+type Halo5TeamPlayer {
+  Gamertag: String!
+}
+
+type Halo5Season {
+  playlists: [Halo5Playlist!]!
+  name: String!
+  iconUrl: URL
+  startDate: DateTime!
+  endDate: DateTime
+  isActive: Boolean!
+  id: GUID!
+}
+
+type Halo5Playlist {
+  name: String!
+  description: String!
+  isRanked: Boolean!
+  imageUrl: URL
+  gameMode: Halo5PlaylistGameModes
+  isActive: Boolean!
+  id: GUID
+}
+
+#########################################
+# Halo 5 Player match history end
+#########################################
+
+#########################################
+# Halo 5 Company start
+#########################################
+type Halo5Company {
+  Id: GUID!
+  Name: String!
+  Creator: Halo5CompanyCreator!
+  PeakMembershipCount: Int!
+  SuspendedUntilDate: ISO8601Date!
+  Members: [Halo5CompanyMember!]!
+  CreatedDate: ISO8601Date!
+  LastModifiedDate: ISO8601Date!
+  Commendations: Halo5Commendations!
+}
+
+type Halo5CompanyCreator {
+  Gamertag: String!
+}
+
+type Halo5CompanyMember {
+  Player: Halo5CompanyPlayer!
+  Role: Int!
+  JoinedDate: ISO8601Date!
+  LastModifiedDate: ISO8601Date!
+}
+
+type Halo5CompanyPlayer {
+  Gamertag: String!
+}
+#########################################
+# Halo 5 Company end
+#########################################
+
+#########################################
+# Halo 5 Commendations start
+#########################################
+type Halo5Commendations {
+  ProgressiveCommendations: [Halo5ProgressiveCommendation!]!
+  MetaCommendations: [Halo5MetaCommendation]!
+  LastUpdatedDateUtc: ISO8601Date!
+}
+
+type Halo5ProgressiveCommendation {
+  Id: GUID!
+  Progress: Int!
+  CommendationInfo: Halo5Commendation!
+}
+
+type Halo5ProgressiveCommendationCompletedLevels {
+  Id: GUID!
+  CompletedDateUtc: ISO8601Date!
+}
+
+type Halo5Commendation {
+  type: String!
+  name: String!
+  description: String!
+  iconImageUrl: URL!
+  levels: [Halo5CommendationLevel!]!
+  requiredLevels: [Halo5RequiredLevel]!
+  reward: Halo5CommendationLevelReward
+  category: Halo5CommendationCategory!
+  enabled: Boolean!
+  id: GUID!
+}
+
+type Halo5CommendationLevel {
+  reward: Halo5CommendationLevelReward!
+}
+
+type Halo5CommendationLevelReward {
+  xp: Int!
+  requistionPacks: [Halo5RequisitionPack]!
+  threshold: Int!
+  id: GUID!
+}
+
+type Halo5RequisitionPack {
+  name: String!
+  description: String!
+  largeImageUrl: URL
+  mediumImageUrl: URL
+  smallImageUrl: URL
+  creditPrice: Float!
+  isPurchasableWithCredits: Boolean!
+  isPurchasableFromMarketplace: Boolean!
+  isGiftOnly: Boolean!
+  xboxMarketplaceProductId: GUID
+  xboxMarketplaceProductUrl: URL
+  id: GUID!
+}
+
+type Halo5RequiredLevel {
+  threshold: Int!
+  id: GUID!
+}
+
+type Halo5CommendationCategory {
+  name: String!
+  iconImageUrl: URL!
+  id: GUID!
+}
+
+type Halo5MetaCommendation {
+  Id: GUID!
+  MetRequirements: [Halo5MetaCommendationRequirement!]!
+  CommendationInfo: Halo5Commendation!
+}
+
+type Halo5MetaCommendationRequirement {
+  Data1: Int!
+  Data2: Int!
+  Data3: Int!
+  Data4: Int!
+}
+#########################################
+# Halo 5 Commendations end
+#########################################
+
+enum Halo5WeaponType {
+  Grenade
+  Turret
+  Vehicle
+  Standard
+  Power
+}
+
+enum Halo5EnemyFaction {
+  UNSC
+  Covenant
+  Promethean
+}
+
+type Halo5FlexibleStats {
+  MedalStatCounts: [Halo5MedalStatCount]
+  ImpulseStatCounts: [Halo5ImpulseCount]
+  MedalTimelapses: [Timelapse]
+  ImpulseTimelaspses: [Timelapse]
+}
+
+type Halo5WeaponStat {
+  WeaponId: Halo5WeaponId!
+  TotalShotsFired: Int!
+  TotalShotsLanded: Int!
+  TotalHeadshots: Int!
+  TotalKills: Int!
+  TotalDamageDealt: Float!
+  TotalPossessionTime: String!
+}
+
+type Halo5WeaponId {
+  StockId: Float!
+  Attachments: [Int]
+  WeaponInfo: Halo5WeaponInfo
+}
+
+type Halo5WeaponInfo {
+  name: String!
+  description: String!
+  type: Halo5WeaponType!
+  largeIconImageUrl: String
+  smallIconImageUrl: String
+  isUsableByPlayer: Boolean!
+  id: String!
+}
+
+type Halo5MedalId {
+  MedalId: Float!
+  Count: Int!
+  MedalInfo: Halo5MedalInfo
+}
+
+type Halo5MedalSpriteLocation {
+  spriteSheetUri: String!
+  left: Int!
+  top: Int!
+  width: Int!
+  height: Int!
+  spriteWidth: Int!
+  spriteHeight: Int!
+}
+
+type Halo5MedalInfo {
+  name: String!
+  description: String!
+  classification: String!
+  difficulty: Int!
+  spriteLocation: Halo5MedalSpriteLocation!
+  id: String!
+}
+
+type Halo5MedalStatCount {
+  Id: GUID!
+  Count: Int!
+}
+
+type Halo5Enemies {
+  Enemy: Halo5EnemyId!
+  TotalKills: Int!
+}
+
+type Halo5EnemyInfo {
+  faction: Halo5EnemyFaction!
+  name: String!
+  description: String
+  largeIconImageUrl: String
+  smallIconImageUrl: String
+  id: String!
+}
+
+type Halo5EnemyId {
+  BaseId: Float!
+  Attachments: [Int]
+  EnemyInfo: Halo5EnemyInfo
+}
+
+type Halo5ImpulseId {
+  Id: Float!
+  Count: Int!
+  ImpulseInfo: Halo5ImpulseInfo
+}
+
+type Halo5ImpulseCount {
+  Id: GUID!
+  Count: Int!
+  ImpulseInfo: Halo5ImpulseInfo
+}
+
+type Halo5ImpulseInfo {
+  internalName: String!
+  id: String!
+}
+
+type Halo5Vehicle {
+  Enemy: Halo5VehicleId!
+  TotalKills: Int!
+}
+
+type Halo5VehicleId {
+  BaseId: Float!
+  Attachments: [Int]
+  VehicleInfo: Halo5VehicleInfo
+}
+
+type Halo5VehicleInfo {
+  name: String!
+  description: String
+  largeIconImageUrl: String
+  smallIconImageUrl: String
+  isUsableByPlayer: Boolean!
+  id: String!
+}
+
+type Timelapse {
+  Id: GUID!
+  Count: Int
+}
+################################################################
+# Halo 5 End
+################################################################
+
+type Query {
+  player(gamertag: String!): Player
+  halo5Appearance(gamertag: String!): Halo5Appearance
+  halo5Emblem(gamertag: String!, size: Halo5ImageSizes): Halo5Emblem
+  halo5SpartanImage(
+    gamertag: String!
+    size: Halo5ImageSizes
+    crop: Halo5SpartanImageCrop
+  ): Halo5SpartanImage
+  halo5ServiceRecordArena(gamertag: String!, seasonId: String): Halo5ServiceRecordArena
+  halo5ServiceRecordWarzone(gamertag: String!): Halo5ServiceRecordWarzone
+  halo5PlayerMatchHistory(
+    gamertag: String!
+    modes: [Halo5GameModes]
+    start: Int
+    count: Int
+    includeTime: Boolean
+  ): Halo5PlayerMatchHistory
+  halo5PlayerCommendations: [Halo5Commendations]
+  halo5Company(id: GUID): Halo5Company!
+  halo5CompanyCommendations(id: GUID): [Halo5Commendations]
+  halo5TeamsMetadata: [Halo5TeamInfo!]!
+  halo5TeamMetadata(id: String!): Halo5TeamInfo!
+  halo5WeaponsMetadata: [Halo5WeaponInfo!]!
+  halo5WeaponMetadata(id: String!): Halo5WeaponInfo!
+  halo5MedalsMetadata: [Halo5MedalInfo!]!
+  halo5MedalMetadata(id: String!): Halo5MedalInfo!
+  halo5EnemiesMetadata: [Halo5EnemyInfo!]!
+  halo5EnemyMetadata(id: String!): Halo5EnemyInfo!
+  halo5ImpulsesMetadata: [Halo5ImpulseInfo!]!
+  halo5ImpulseMetadata(id: String!): Halo5ImpulseInfo!
+  halo5VehiclesMetadata: [Halo5VehicleInfo!]!
+  halo5VehicleMetadata(id: String!): Halo5VehicleInfo!
+  halo5CommendationsMetadata: [Halo5Commendation!]!
+  halo5CommendationMetadata: Halo5Commendation!
+}
+
+type Player {
+  halo5Appearance: Halo5Appearance
+  halo5Emblem(size: Halo5ImageSizes): Halo5Emblem
+  halo5SpartanImage(size: Halo5ImageSizes, crop: Halo5SpartanImageCrop): Halo5SpartanImage
+  halo5ServiceRecordArena(seasonId: String): Halo5ServiceRecordArena
+  halo5ServiceRecordWarzone: Halo5ServiceRecordWarzone
+  halo5PlayerMatchHistory(
+    modes: [Halo5GameModes]
+    start: Int
+    count: Int
+    includeTime: Boolean
+  ): Halo5PlayerMatchHistory
+  halo5PlayerCommendations: Halo5Commendations!
+}
+################
