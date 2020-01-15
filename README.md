@@ -1,7 +1,7 @@
 # HALO API GraphQL server example
 
 <p align="center">
-   ![GraphQL playground showing data returned from the HALO API](/.github/images/example.png) 
+   <img src="/.github/images/example.png" alt="GraphQL playground showing data returned from the HALO API"/> 
 </p>
 
 ## Getting Started
